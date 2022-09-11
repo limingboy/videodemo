@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.server.dao.system.UserDAO">
+  <resultMap id="BaseResultMap" type="com.example.server.entity.system.User">
+    <id column="usercode" jdbcType="VARCHAR" property="usercode" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="sfky" jdbcType="VARCHAR" property="sfky" />
+    <result column="sflock" jdbcType="VARCHAR" property="sflock" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="submc" jdbcType="VARCHAR" property="submc" />
+    <result column="imgwjlj" jdbcType="VARCHAR" property="imgwjlj" />
+    <result column="imgwjmc" jdbcType="VARCHAR" property="imgwjmc" />
+    <result column="motto" jdbcType="VARCHAR" property="motto" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="create_date" jdbcType="DATE" property="createDate" />
+    <result column="update_date" jdbcType="DATE" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    usercode, pwd, sfky, sflock, phone, email, submc, imgwjlj, imgwjmc, motto, `type`, 
+    create_date, update_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where usercode = #{usercode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where usercode = #{usercode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.server.entity.system.User">
+    insert into user (usercode, pwd, sfky, 
+      sflock, phone, email, 
+      submc, imgwjlj, imgwjmc, 
+      motto, `type`, create_date, 
+      update_date)
+    values (#{usercode,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, #{sfky,jdbcType=VARCHAR}, 
+      #{sflock,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{submc,jdbcType=VARCHAR}, #{imgwjlj,jdbcType=VARCHAR}, #{imgwjmc,jdbcType=VARCHAR}, 
+      #{motto,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{createDate,jdbcType=DATE}, 
+      #{updateDate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.server.entity.system.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="usercode != null">
+        usercode,
+      </if>
+      <if test="pwd != null">
+        pwd,
+      </if>
+      <if test="sfky != null">
+        sfky,
+      </if>
+      <if test="sflock != null">
+        sflock,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="submc != null">
+        submc,
+      </if>
+      <if test="imgwjlj != null">
+        imgwjlj,
+      </if>
+      <if test="imgwjmc != null">
+        imgwjmc,
+      </if>
+      <if test="motto != null">
+        motto,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="usercode != null">
+        #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="sfky != null">
+        #{sfky,jdbcType=VARCHAR},
+      </if>
+      <if test="sflock != null">
+        #{sflock,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="submc != null">
+        #{submc,jdbcType=VARCHAR},
+      </if>
+      <if test="imgwjlj != null">
+        #{imgwjlj,jdbcType=VARCHAR},
+      </if>
+      <if test="imgwjmc != null">
+        #{imgwjmc,jdbcType=VARCHAR},
+      </if>
+      <if test="motto != null">
+        #{motto,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=DATE},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.server.entity.system.User">
+    update user
+    <set>
+      <if test="pwd != null">
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="sfky != null">
+        sfky = #{sfky,jdbcType=VARCHAR},
+      </if>
+      <if test="sflock != null">
+        sflock = #{sflock,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="submc != null">
+        submc = #{submc,jdbcType=VARCHAR},
+      </if>
+      <if test="imgwjlj != null">
+        imgwjlj = #{imgwjlj,jdbcType=VARCHAR},
+      </if>
+      <if test="imgwjmc != null">
+        imgwjmc = #{imgwjmc,jdbcType=VARCHAR},
+      </if>
+      <if test="motto != null">
+        motto = #{motto,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=DATE},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=DATE},
+      </if>
+    </set>
+    where usercode = #{usercode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.server.entity.system.User">
+    update user
+    set pwd = #{pwd,jdbcType=VARCHAR},
+      sfky = #{sfky,jdbcType=VARCHAR},
+      sflock = #{sflock,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      submc = #{submc,jdbcType=VARCHAR},
+      imgwjlj = #{imgwjlj,jdbcType=VARCHAR},
+      imgwjmc = #{imgwjmc,jdbcType=VARCHAR},
+      motto = #{motto,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=DATE},
+      update_date = #{updateDate,jdbcType=DATE}
+    where usercode = #{usercode,jdbcType=VARCHAR}
+  </update>
+</mapper>

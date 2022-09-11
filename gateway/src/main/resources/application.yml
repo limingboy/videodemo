@@ -1,8 +1,22 @@
+server:
+  port: 9000
 spring:
   application:
     name: gateway
-server:
-  port: 9000
+  cloud:
+    gateway:
+      #路由转发
+      routes:
+        #注意写法 基本是固定格式
+        - id: system
+          uri: http://localhost:9001
+          predicates:
+            - Path=/system/**
+        - id: video
+          uri: http://localhost:9002
+          predicates:
+            - Path=/video/**
+
 eureka:
   client:
     service-url:

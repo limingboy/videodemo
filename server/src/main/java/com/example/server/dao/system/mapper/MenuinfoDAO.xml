@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.server.dao.system.MenuinfoDAO">
+  <resultMap id="BaseResultMap" type="com.example.server.entity.system.Menuinfo">
+    <id column="menucode" jdbcType="VARCHAR" property="menucode" />
+    <result column="parentcode" jdbcType="VARCHAR" property="parentcode" />
+    <result column="menuname" jdbcType="VARCHAR" property="menuname" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="linkurl" jdbcType="VARCHAR" property="linkurl" />
+    <result column="iconurl" jdbcType="VARCHAR" property="iconurl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    menucode, parentcode, menuname, `state`, linkurl, iconurl
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from menuinfo
+    where menucode = #{menucode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from menuinfo
+    where menucode = #{menucode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.server.entity.system.Menuinfo">
+    insert into menuinfo (menucode, parentcode, menuname, 
+      `state`, linkurl, iconurl
+      )
+    values (#{menucode,jdbcType=VARCHAR}, #{parentcode,jdbcType=VARCHAR}, #{menuname,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR}, #{linkurl,jdbcType=VARCHAR}, #{iconurl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.server.entity.system.Menuinfo">
+    insert into menuinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="menucode != null">
+        menucode,
+      </if>
+      <if test="parentcode != null">
+        parentcode,
+      </if>
+      <if test="menuname != null">
+        menuname,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="linkurl != null">
+        linkurl,
+      </if>
+      <if test="iconurl != null">
+        iconurl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="menucode != null">
+        #{menucode,jdbcType=VARCHAR},
+      </if>
+      <if test="parentcode != null">
+        #{parentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="menuname != null">
+        #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="linkurl != null">
+        #{linkurl,jdbcType=VARCHAR},
+      </if>
+      <if test="iconurl != null">
+        #{iconurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.server.entity.system.Menuinfo">
+    update menuinfo
+    <set>
+      <if test="parentcode != null">
+        parentcode = #{parentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="menuname != null">
+        menuname = #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="linkurl != null">
+        linkurl = #{linkurl,jdbcType=VARCHAR},
+      </if>
+      <if test="iconurl != null">
+        iconurl = #{iconurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where menucode = #{menucode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.server.entity.system.Menuinfo">
+    update menuinfo
+    set parentcode = #{parentcode,jdbcType=VARCHAR},
+      menuname = #{menuname,jdbcType=VARCHAR},
+      `state` = #{state,jdbcType=VARCHAR},
+      linkurl = #{linkurl,jdbcType=VARCHAR},
+      iconurl = #{iconurl,jdbcType=VARCHAR}
+    where menucode = #{menucode,jdbcType=VARCHAR}
+  </update>
+</mapper>

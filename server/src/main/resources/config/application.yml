@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: server
+  #数据库连接
+  datasource:
+    url: jdbc:mysql://localhost:33060/videodb?characterEncoding=UTF8&autoReconnect=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+#mybatis 配置
+mybatis:
+  mapper-locations: classpath:com/example/server/Dao/**/mapper/*.xml
+  type-aliases-package: com.example.server.entity.*
+logging:
+  level:
+    com.example.service.dao.mapper: trace

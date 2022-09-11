@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.server.dao.video.VideoinfoDAO">
+  <resultMap id="BaseResultMap" type="com.example.server.entity.video.Videoinfo">
+    <id column="videodm" jdbcType="VARCHAR" property="videodm" />
+    <result column="videomc" jdbcType="VARCHAR" property="videomc" />
+    <result column="submc" jdbcType="VARCHAR" property="submc" />
+    <result column="sfky" jdbcType="VARCHAR" property="sfky" />
+    <result column="type_m" jdbcType="VARCHAR" property="typeM" />
+    <result column="sfsf" jdbcType="VARCHAR" property="sfsf" />
+    <result column="sfbz" jdbcType="DOUBLE" property="sfbz" />
+    <result column="sfgk" jdbcType="VARCHAR" property="sfgk" />
+    <result column="imgwjlj" jdbcType="VARCHAR" property="imgwjlj" />
+    <result column="imgwjmc" jdbcType="VARCHAR" property="imgwjmc" />
+    <result column="previewwjlj" jdbcType="VARCHAR" property="previewwjlj" />
+    <result column="previewwjmc" jdbcType="VARCHAR" property="previewwjmc" />
+    <result column="wjlj" jdbcType="VARCHAR" property="wjlj" />
+    <result column="wjmc" jdbcType="VARCHAR" property="wjmc" />
+    <result column="fvideodm" jdbcType="VARCHAR" property="fvideodm" />
+    <result column="briefinfo" jdbcType="VARCHAR" property="briefinfo" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_date" jdbcType="DATE" property="createDate" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="update_date" jdbcType="DATE" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    videodm, videomc, submc, sfky, type_m, sfsf, sfbz, sfgk, imgwjlj, imgwjmc, previewwjlj, 
+    previewwjmc, wjlj, wjmc, fvideodm, briefinfo, create_user, create_date, update_user, 
+    update_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from videoinfo
+    where videodm = #{videodm,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from videoinfo
+    where videodm = #{videodm,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.server.entity.video.Videoinfo">
+    insert into videoinfo (videodm, videomc, submc, 
+      sfky, type_m, sfsf, 
+      sfbz, sfgk, imgwjlj, 
+      imgwjmc, previewwjlj, previewwjmc, 
+      wjlj, wjmc, fvideodm, 
+      briefinfo, create_user, create_date, 
+      update_user, update_date)
+    values (#{videodm,jdbcType=VARCHAR}, #{videomc,jdbcType=VARCHAR}, #{submc,jdbcType=VARCHAR}, 
+      #{sfky,jdbcType=VARCHAR}, #{typeM,jdbcType=VARCHAR}, #{sfsf,jdbcType=VARCHAR}, 
+      #{sfbz,jdbcType=DOUBLE}, #{sfgk,jdbcType=VARCHAR}, #{imgwjlj,jdbcType=VARCHAR}, 
+      #{imgwjmc,jdbcType=VARCHAR}, #{previewwjlj,jdbcType=VARCHAR}, #{previewwjmc,jdbcType=VARCHAR}, 
+      #{wjlj,jdbcType=VARCHAR}, #{wjmc,jdbcType=VARCHAR}, #{fvideodm,jdbcType=VARCHAR}, 
+      #{briefinfo,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR}, #{createDate,jdbcType=DATE}, 
+      #{updateUser,jdbcType=VARCHAR}, #{updateDate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.server.entity.video.Videoinfo">
+    insert into videoinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="videodm != null">
+        videodm,
+      </if>
+      <if test="videomc != null">
+        videomc,
+      </if>
+      <if test="submc != null">
+        submc,
+      </if>
+      <if test="sfky != null">
+        sfky,
+      </if>
+      <if test="typeM != null">
+        type_m,
+      </if>
+      <if test="sfsf != null">
+        sfsf,
+      </if>
+      <if test="sfbz != null">
+        sfbz,
+      </if>
+      <if test="sfgk != null">
+        sfgk,
+      </if>
+      <if test="imgwjlj != null">
+        imgwjlj,
+      </if>
+      <if test="imgwjmc != null">
+        imgwjmc,
+      </if>
+      <if test="previewwjlj != null">
+        previewwjlj,
+      </if>
+      <if test="previewwjmc != null">
+        previewwjmc,
+      </if>
+      <if test="wjlj != null">
+        wjlj,
+      </if>
+      <if test="wjmc != null">
+        wjmc,
+      </if>
+      <if test="fvideodm != null">
+        fvideodm,
+      </if>
+      <if test="briefinfo != null">
+        briefinfo,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateUser != null">
+        update_user,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="videodm != null">
+        #{videodm,jdbcType=VARCHAR},
+      </if>
+      <if test="videomc != null">
+        #{videomc,jdbcType=VARCHAR},
+      </if>
+      <if test="submc != null">
+        #{submc,jdbcType=VARCHAR},
+      </if>
+      <if test="sfky != null">
+        #{sfky,jdbcType=VARCHAR},
+      </if>
+      <if test="typeM != null">
+        #{typeM,jdbcType=VARCHAR},
+      </if>
+      <if test="sfsf != null">
+        #{sfsf,jdbcType=VARCHAR},
+      </if>
+      <if test="sfbz != null">
+        #{sfbz,jdbcType=DOUBLE},
+      </if>
+      <if test="sfgk != null">
+        #{sfgk,jdbcType=VARCHAR},
+      </if>
+      <if test="imgwjlj != null">
+        #{imgwjlj,jdbcType=VARCHAR},
+      </if>
+      <if test="imgwjmc != null">
+        #{imgwjmc,jdbcType=VARCHAR},
+      </if>
+      <if test="previewwjlj != null">
+        #{previewwjlj,jdbcType=VARCHAR},
+      </if>
+      <if test="previewwjmc != null">
+        #{previewwjmc,jdbcType=VARCHAR},
+      </if>
+      <if test="wjlj != null">
+        #{wjlj,jdbcType=VARCHAR},
+      </if>
+      <if test="wjmc != null">
+        #{wjmc,jdbcType=VARCHAR},
+      </if>
+      <if test="fvideodm != null">
+        #{fvideodm,jdbcType=VARCHAR},
+      </if>
+      <if test="briefinfo != null">
+        #{briefinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=DATE},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.server.entity.video.Videoinfo">
+    update videoinfo
+    <set>
+      <if test="videomc != null">
+        videomc = #{videomc,jdbcType=VARCHAR},
+      </if>
+      <if test="submc != null">
+        submc = #{submc,jdbcType=VARCHAR},
+      </if>
+      <if test="sfky != null">
+        sfky = #{sfky,jdbcType=VARCHAR},
+      </if>
+      <if test="typeM != null">
+        type_m = #{typeM,jdbcType=VARCHAR},
+      </if>
+      <if test="sfsf != null">
+        sfsf = #{sfsf,jdbcType=VARCHAR},
+      </if>
+      <if test="sfbz != null">
+        sfbz = #{sfbz,jdbcType=DOUBLE},
+      </if>
+      <if test="sfgk != null">
+        sfgk = #{sfgk,jdbcType=VARCHAR},
+      </if>
+      <if test="imgwjlj != null">
+        imgwjlj = #{imgwjlj,jdbcType=VARCHAR},
+      </if>
+      <if test="imgwjmc != null">
+        imgwjmc = #{imgwjmc,jdbcType=VARCHAR},
+      </if>
+      <if test="previewwjlj != null">
+        previewwjlj = #{previewwjlj,jdbcType=VARCHAR},
+      </if>
+      <if test="previewwjmc != null">
+        previewwjmc = #{previewwjmc,jdbcType=VARCHAR},
+      </if>
+      <if test="wjlj != null">
+        wjlj = #{wjlj,jdbcType=VARCHAR},
+      </if>
+      <if test="wjmc != null">
+        wjmc = #{wjmc,jdbcType=VARCHAR},
+      </if>
+      <if test="fvideodm != null">
+        fvideodm = #{fvideodm,jdbcType=VARCHAR},
+      </if>
+      <if test="briefinfo != null">
+        briefinfo = #{briefinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=DATE},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=DATE},
+      </if>
+    </set>
+    where videodm = #{videodm,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.server.entity.video.Videoinfo">
+    update videoinfo
+    set videomc = #{videomc,jdbcType=VARCHAR},
+      submc = #{submc,jdbcType=VARCHAR},
+      sfky = #{sfky,jdbcType=VARCHAR},
+      type_m = #{typeM,jdbcType=VARCHAR},
+      sfsf = #{sfsf,jdbcType=VARCHAR},
+      sfbz = #{sfbz,jdbcType=DOUBLE},
+      sfgk = #{sfgk,jdbcType=VARCHAR},
+      imgwjlj = #{imgwjlj,jdbcType=VARCHAR},
+      imgwjmc = #{imgwjmc,jdbcType=VARCHAR},
+      previewwjlj = #{previewwjlj,jdbcType=VARCHAR},
+      previewwjmc = #{previewwjmc,jdbcType=VARCHAR},
+      wjlj = #{wjlj,jdbcType=VARCHAR},
+      wjmc = #{wjmc,jdbcType=VARCHAR},
+      fvideodm = #{fvideodm,jdbcType=VARCHAR},
+      briefinfo = #{briefinfo,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=DATE},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=DATE}
+    where videodm = #{videodm,jdbcType=VARCHAR}
+  </update>
+</mapper>

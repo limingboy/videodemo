@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.system.dao.DatadicDAO">
+  <resultMap id="BaseResultMap" type="com.example.system.entity.Datadic">
+    <id column="typedm" jdbcType="VARCHAR" property="typedm" />
+    <result column="typemc" jdbcType="VARCHAR" property="typemc" />
+    <result column="sfky" jdbcType="VARCHAR" property="sfky" />
+    <result column="bzh" jdbcType="VARCHAR" property="bzh" />
+    <result column="parenttypedm" jdbcType="VARCHAR" property="parenttypedm" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_date" jdbcType="DATE" property="createDate" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="update_date" jdbcType="DATE" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    typedm, typemc, sfky, bzh, parenttypedm, create_user, create_date, update_user, update_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from datadic
+    where typedm = #{typedm,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from datadic
+    where typedm = #{typedm,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.system.entity.Datadic">
+    insert into datadic (typedm, typemc, sfky, 
+      bzh, parenttypedm, create_user, 
+      create_date, update_user, update_date
+      )
+    values (#{typedm,jdbcType=VARCHAR}, #{typemc,jdbcType=VARCHAR}, #{sfky,jdbcType=VARCHAR}, 
+      #{bzh,jdbcType=VARCHAR}, #{parenttypedm,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=DATE}, #{updateUser,jdbcType=VARCHAR}, #{updateDate,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.system.entity.Datadic">
+    insert into datadic
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="typedm != null">
+        typedm,
+      </if>
+      <if test="typemc != null">
+        typemc,
+      </if>
+      <if test="sfky != null">
+        sfky,
+      </if>
+      <if test="bzh != null">
+        bzh,
+      </if>
+      <if test="parenttypedm != null">
+        parenttypedm,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateUser != null">
+        update_user,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="typedm != null">
+        #{typedm,jdbcType=VARCHAR},
+      </if>
+      <if test="typemc != null">
+        #{typemc,jdbcType=VARCHAR},
+      </if>
+      <if test="sfky != null">
+        #{sfky,jdbcType=VARCHAR},
+      </if>
+      <if test="bzh != null">
+        #{bzh,jdbcType=VARCHAR},
+      </if>
+      <if test="parenttypedm != null">
+        #{parenttypedm,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=DATE},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.system.entity.Datadic">
+    update datadic
+    <set>
+      <if test="typemc != null">
+        typemc = #{typemc,jdbcType=VARCHAR},
+      </if>
+      <if test="sfky != null">
+        sfky = #{sfky,jdbcType=VARCHAR},
+      </if>
+      <if test="bzh != null">
+        bzh = #{bzh,jdbcType=VARCHAR},
+      </if>
+      <if test="parenttypedm != null">
+        parenttypedm = #{parenttypedm,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=DATE},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=DATE},
+      </if>
+    </set>
+    where typedm = #{typedm,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.system.entity.Datadic">
+    update datadic
+    set typemc = #{typemc,jdbcType=VARCHAR},
+      sfky = #{sfky,jdbcType=VARCHAR},
+      bzh = #{bzh,jdbcType=VARCHAR},
+      parenttypedm = #{parenttypedm,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=DATE},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=DATE}
+    where typedm = #{typedm,jdbcType=VARCHAR}
+  </update>
+  <select id="selectVDataDicByBzh" parameterType="java.lang.String" resultType="java.util.Map">
+    select a.dm,a.mc from v_dataset a
+    <where>
+      <if test="bzh!=null and bzh!=''">
+        a.bzh=#{bzh}
+      </if>
+    </where>
+  </select>
+</mapper>

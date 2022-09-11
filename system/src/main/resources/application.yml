@@ -1,14 +1,16 @@
 spring:
   application:
     name: system
-  #数据库连接
+    #数据库连接
   datasource:
-    url: jdbc:mysql://localhost:33060/studyvideo?characterEncoding=UTF8&autoReconnect=true
+    url: jdbc:mysql://localhost:33060/videodb?characterEncoding=UTF8&autoReconnect=true
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
 server:
   port: 9001
+  servlet:
+    context-path: /system
 eureka:
   client:
     service-url:
@@ -17,4 +19,7 @@ eureka:
 #mybatis 配置
 mybatis:
   mapper-locations: classpath:com/example/system/Dao/mapper/*.xml
-  type-aliases-package: com.example.system.entity
+  type-aliases-package: com.example.system.entity.*
+logging:
+  level:
+    com.example.service.dao.mapper: trace

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.server.dao.video.UsertovideoDAO">
+  <resultMap id="BaseResultMap" type="com.example.server.entity.video.Usertovideo">
+    <id column="videodm" jdbcType="VARCHAR" property="videodm" />
+    <id column="usercode" jdbcType="VARCHAR" property="usercode" />
+    <id column="type" jdbcType="VARCHAR" property="type" />
+    <result column="recordtime" jdbcType="DATE" property="recordtime" />
+    <result column="recentvideodm" jdbcType="VARCHAR" property="recentvideodm" />
+    <result column="create_date" jdbcType="DATE" property="createDate" />
+    <result column="update_date" jdbcType="DATE" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    videodm, usercode, `type`, recordtime, recentvideodm, create_date, update_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.example.server.entity.video.UsertovideoKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from usertovideo
+    where videodm = #{videodm,jdbcType=VARCHAR}
+      and usercode = #{usercode,jdbcType=VARCHAR}
+      and `type` = #{type,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.example.server.entity.video.UsertovideoKey">
+    delete from usertovideo
+    where videodm = #{videodm,jdbcType=VARCHAR}
+      and usercode = #{usercode,jdbcType=VARCHAR}
+      and `type` = #{type,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.server.entity.video.Usertovideo">
+    insert into usertovideo (videodm, usercode, `type`, 
+      recordtime, recentvideodm, create_date, 
+      update_date)
+    values (#{videodm,jdbcType=VARCHAR}, #{usercode,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{recordtime,jdbcType=DATE}, #{recentvideodm,jdbcType=VARCHAR}, #{createDate,jdbcType=DATE}, 
+      #{updateDate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.server.entity.video.Usertovideo">
+    insert into usertovideo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="videodm != null">
+        videodm,
+      </if>
+      <if test="usercode != null">
+        usercode,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="recordtime != null">
+        recordtime,
+      </if>
+      <if test="recentvideodm != null">
+        recentvideodm,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="videodm != null">
+        #{videodm,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null">
+        #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="recordtime != null">
+        #{recordtime,jdbcType=DATE},
+      </if>
+      <if test="recentvideodm != null">
+        #{recentvideodm,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=DATE},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.server.entity.video.Usertovideo">
+    update usertovideo
+    <set>
+      <if test="recordtime != null">
+        recordtime = #{recordtime,jdbcType=DATE},
+      </if>
+      <if test="recentvideodm != null">
+        recentvideodm = #{recentvideodm,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=DATE},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=DATE},
+      </if>
+    </set>
+    where videodm = #{videodm,jdbcType=VARCHAR}
+      and usercode = #{usercode,jdbcType=VARCHAR}
+      and `type` = #{type,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.server.entity.video.Usertovideo">
+    update usertovideo
+    set recordtime = #{recordtime,jdbcType=DATE},
+      recentvideodm = #{recentvideodm,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=DATE},
+      update_date = #{updateDate,jdbcType=DATE}
+    where videodm = #{videodm,jdbcType=VARCHAR}
+      and usercode = #{usercode,jdbcType=VARCHAR}
+      and `type` = #{type,jdbcType=VARCHAR}
+  </update>
+</mapper>
